@@ -1,0 +1,13 @@
+package com.calltree.api.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
+public class UserDTO {
+	private String mobileNumber;
+	private String name;
+	private String address;
+	private String geolocation;
+}
