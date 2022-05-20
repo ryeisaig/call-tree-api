@@ -3,6 +3,7 @@ package com.calltree.core.service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,9 @@ public class CallTreeService {
 		CallTreeEntity newCallTree = new CallTreeEntity();
 		newCallTree.setCreatedBy(callTree.getUsername());
 		newCallTree.setSubject(callTree.getSubject());
+		newCallTree.setCaption(callTree.getCaption());
+		newCallTree.setReferenceId(UUID.randomUUID().toString());
+		newCallTree.setResponseTypes(callTree.getResponseTypes());
 		callTreeRepository.save(newCallTree);
 		return newCallTree;
 	}

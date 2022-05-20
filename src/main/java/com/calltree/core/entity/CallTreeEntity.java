@@ -24,7 +24,11 @@ public class CallTreeEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	private String referenceId;
+	
 	private String subject;
+	
+	private String caption;
 	
 	private String createdBy;
 	
@@ -42,6 +46,8 @@ public class CallTreeEntity {
 	
 	@Transient
 	private int totalInDanger;
+	
+	private String responseTypes;
 	
 	@PrePersist
 	private void prePersist() {

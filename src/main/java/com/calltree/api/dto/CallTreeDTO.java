@@ -10,6 +10,8 @@ import lombok.Getter;
 public class CallTreeDTO {
 	private long id;
 	private String subject;
+	private String caption;
 	private LocalDateTime dateCreated;
 	private String username;
+	private String responseTypes;
 }
