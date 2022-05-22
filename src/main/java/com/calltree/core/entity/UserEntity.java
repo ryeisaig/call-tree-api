@@ -19,7 +19,7 @@ import lombok.Setter;
 public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long _id;
+	private long id;
 	
 	private String mobileNumber;
 	
@@ -27,7 +27,9 @@ public class UserEntity {
 
 	private String address;
 	
-	private String geolocation;
+	private String geolocationX;
+	
+	private String geolocationY;
 
 	private String createdBy;
 	

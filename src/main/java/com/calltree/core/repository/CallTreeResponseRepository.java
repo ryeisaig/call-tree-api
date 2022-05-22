@@ -15,4 +15,6 @@ public interface CallTreeResponseRepository extends JpaRepository<CallTreeRespon
 
 	int countByCallTreeIdAndResponse(long get_id, CallTreeResponseTypes type);
 
+	List<CallTreeResponseEntity> findByCallTreeId(long id);
+
 }

@@ -59,4 +59,9 @@ public class CallTreeAPI {
 	public ResponseEntity<List<CallTreeEntity>> getAllCallTree() {
 		return ResponseEntity.ok(callTreeService.getAllCallTrees());
 	}
+	
+	@GetMapping("/{id}/responses")
+	public ResponseEntity<List<CallTreeResponseEntity>> getAllCallTreeResponses(@PathVariable long id) {
+		return ResponseEntity.ok(callTreeService.getCallTreeResponses(id));
+	}
 }

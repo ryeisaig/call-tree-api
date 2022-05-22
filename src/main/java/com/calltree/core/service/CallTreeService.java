@@ -11,9 +11,11 @@ import com.calltree.api.dto.CallTreeDTO;
 import com.calltree.api.dto.CallTreeResponseDTO;
 import com.calltree.core.entity.CallTreeEntity;
 import com.calltree.core.entity.CallTreeResponseEntity;
+import com.calltree.core.entity.UserEntity;
 import com.calltree.core.enumeration.CallTreeResponseTypes;
 import com.calltree.core.repository.CallTreeRepository;
 import com.calltree.core.repository.CallTreeResponseRepository;
+import com.calltree.core.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,7 +25,8 @@ public class CallTreeService {
 
 	private final CallTreeRepository callTreeRepository;
 	private final CallTreeResponseRepository callTreeResponseRepository;
-		
+	private final UserRepository userRepository;
+
 	public CallTreeEntity createCallTree(CallTreeDTO callTree) {
 		CallTreeEntity newCallTree = new CallTreeEntity();
 		newCallTree.setCreatedBy(callTree.getUsername());
@@ -70,7 +73,8 @@ public class CallTreeService {
 	}
 	
 	public List<CallTreeEntity> getPendingCallTree(String mobileNumber) {
-		List<CallTreeEntity> callTreeList = callTreeRepository.findAll();
+		UserEntity user = userRepository.findByMobileNumber(mobileNumber);
+		List<CallTreeEntity> callTreeList = callTreeRepository.findByCreatedDateGreaterThan(user.getCreatedDate());
 		List<CallTreeResponseEntity> respondedCallTreeList = callTreeResponseRepository.findByCreatedBy(mobileNumber);
 		
 		List<CallTreeEntity> filteredCallTree = new ArrayList<>();
@@ -91,6 +95,18 @@ public class CallTreeService {
 	
 	public CallTreeEntity getCallTreeById(long id) {
 		return callTreeRepository.findById(id).get();
+	}
+	
+	public List<CallTreeResponseEntity> getCallTreeResponses(long id) {
+		List<CallTreeResponseEntity> responses = callTreeResponseRepository.findByCallTreeId(id);
+		responses.forEach(resp -> {
+			UserEntity user = userRepository.findByMobileNumber(resp.getCreatedBy());
+			resp.setAddress(user.getAddress());
+			resp.setFullname(user.getName());
+			resp.setGeolocationX(user.getGeolocationX());
+			resp.setGeolocationY(user.getGeolocationY());
+		});
+		return responses;
 	}
 	
 	public List<CallTreeResponseEntity> getRespondedCallTree(String mobileNumber) {

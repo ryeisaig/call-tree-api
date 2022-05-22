@@ -9,5 +9,6 @@ public class UserDTO {
 	private String mobileNumber;
 	private String name;
 	private String address;
-	private String geolocation;
+	private String geolocationX;
+	private String geolocationY;
 }

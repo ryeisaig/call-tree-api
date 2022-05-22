@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.calltree.core.enumeration.CallTreeResponseTypes;
 
@@ -39,6 +40,18 @@ public class CallTreeResponseEntity {
 	private String createdBy;
 	
 	private LocalDateTime createdDate;
+	
+	@Transient
+	private String fullname;
+	
+	@Transient
+	private String address;
+	
+	@Transient
+	private String geolocationX;
+	
+	@Transient
+	private String geolocationY;
 	
 	@PrePersist
 	private void prePersist() {

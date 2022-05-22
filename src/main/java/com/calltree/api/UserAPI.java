@@ -1,5 +1,7 @@
 package com.calltree.api;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +34,11 @@ public class UserAPI {
 	@GetMapping
 	public ResponseEntity<UserEntity> getUser(@RequestParam String mobileNumber) {
 		return ResponseEntity.ok(userService.retrieveUserByMobileNumber(mobileNumber));
+	}
+	
+	@GetMapping("/all")
+	public ResponseEntity<List<UserEntity>> getUsers() {
+		return ResponseEntity.ok(userService.retrieveUsers());
 	}
 	
 	@GetMapping("/otp")

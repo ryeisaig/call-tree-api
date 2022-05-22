@@ -19,7 +19,7 @@ import lombok.Setter;
 public class OtpEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long _id;
+	private long id;
 	
 	private String referenceKey;
 	
