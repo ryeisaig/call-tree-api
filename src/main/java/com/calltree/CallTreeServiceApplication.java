@@ -9,5 +9,4 @@ public class CallTreeServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CallTreeServiceApplication.class, args);
 	}
-
 }

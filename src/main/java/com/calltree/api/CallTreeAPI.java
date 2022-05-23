@@ -3,7 +3,9 @@ package com.calltree.api;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.calltree.api.dto.CallTreeDTO;
 import com.calltree.api.dto.CallTreeResponseDTO;
+import com.calltree.api.dto.TextMessageDTO;
 import com.calltree.core.entity.CallTreeEntity;
 import com.calltree.core.entity.CallTreeResponseEntity;
 import com.calltree.core.service.CallTreeService;
@@ -29,10 +32,19 @@ public class CallTreeAPI {
 	
 	private final CallTreeService callTreeService;
 	
+	private final SimpMessagingTemplate template;
+	
+	@SendTo("/topic/message")
+	public TextMessageDTO broadcastMessage(@Payload TextMessageDTO textMessageDTO) {
+		return textMessageDTO;
+	}
+	
 	@PostMapping
-	@SendTo("/created")
 	public ResponseEntity<CallTreeEntity> createCallTree(@RequestBody CallTreeDTO callTree) {
+		template.convertAndSend("/topic/message", new TextMessageDTO("test"));
 		return ResponseEntity.ok(callTreeService.createCallTree(callTree));
+		
+		
 	}
 	
 	@PostMapping("/respond")
