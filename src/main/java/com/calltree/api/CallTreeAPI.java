@@ -39,6 +39,11 @@ public class CallTreeAPI {
 		return textMessageDTO;
 	}
 	
+	@SendTo("/topic/responded")
+	public TextMessageDTO broadcastMessageResponded(@Payload TextMessageDTO textMessageDTO) {
+		return textMessageDTO;
+	}
+	
 	@PostMapping
 	public ResponseEntity<CallTreeEntity> createCallTree(@RequestBody CallTreeDTO callTree) {
 		template.convertAndSend("/topic/message", new TextMessageDTO("test"));
@@ -49,6 +54,7 @@ public class CallTreeAPI {
 	
 	@PostMapping("/respond")
 	public ResponseEntity<CallTreeResponseEntity> saveCallTree(@RequestBody CallTreeResponseDTO callTreeResponse) {
+		template.convertAndSend("/topic/responded", new TextMessageDTO("test"));
 		return ResponseEntity.ok(callTreeService.saveCallTreeResponse(callTreeResponse));
 	}
 	

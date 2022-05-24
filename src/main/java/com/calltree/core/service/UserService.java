@@ -13,7 +13,6 @@ import com.calltree.core.entity.OtpEntity;
 import com.calltree.core.entity.UserEntity;
 import com.calltree.core.repository.OtpRepository;
 import com.calltree.core.repository.UserRepository;
-import com.twilio.Twilio;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
