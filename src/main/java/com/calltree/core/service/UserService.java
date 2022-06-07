@@ -13,7 +13,9 @@ import com.calltree.core.entity.OtpEntity;
 import com.calltree.core.entity.UserEntity;
 import com.calltree.core.repository.OtpRepository;
 import com.calltree.core.repository.UserRepository;
-
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -49,12 +51,12 @@ public class UserService {
 		
 		otpRepository.save(otpEntity);
 		
-//		Twilio.init("ACd963c55fcd7f379f04f39a05b8ab7c8d", "092b8338d66e045a136d3031fd3a8370");
-//		Message.creator(
-//		    new PhoneNumber("+" + mobileNumber),
-//		    new PhoneNumber("+18455812788"),
-//		    "Your Call Tree OTP : " + otp)
-//		.create();
+		Twilio.init("ACd070168f8246a20ebdf30a1e261ef847", "3abc8a231dda31d3a761946a2b051537");
+		Message.creator(
+		    new PhoneNumber("+" + mobileNumber),
+		    new PhoneNumber("+19302064111"),
+		    "Your Call Tree OTP : " + otp)
+		.create();
 
 		return otpEntity;
 	}
