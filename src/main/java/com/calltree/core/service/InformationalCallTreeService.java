@@ -33,4 +33,17 @@ public class InformationalCallTreeService {
 	public InformationalCallTreeEntity getCallTreeById(long id) {
 		return informationCallTreeRepository.findById(id).get();
 	}
+	
+	public void delete(long id) {
+		informationCallTreeRepository.deleteById(id);
+	}
+	
+	public InformationalCallTreeEntity modify(long id, InformationalCallTreeDTO callTree) {
+		InformationalCallTreeEntity newCallTree = informationCallTreeRepository.findById(id).get();
+		newCallTree.setSubject(callTree.getSubject());
+		newCallTree.setContent(callTree.getContent());
+		informationCallTreeRepository.save(newCallTree);
+		return newCallTree;
+	}
 }
+

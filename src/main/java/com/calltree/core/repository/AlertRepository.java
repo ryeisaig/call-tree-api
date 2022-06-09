@@ -14,4 +14,6 @@ public interface AlertRepository extends JpaRepository<AlertEntity, Long> {
 
 	List<AlertEntity> findByMobileNumberOrderByCreatedDateDesc(String mobileNumber);
 
+	long countByStatus(String string);
+
 }

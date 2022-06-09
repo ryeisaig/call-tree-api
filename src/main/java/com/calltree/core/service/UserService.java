@@ -51,13 +51,7 @@ public class UserService {
 		
 		otpRepository.save(otpEntity);
 		
-		Twilio.init("ACd070168f8246a20ebdf30a1e261ef847", "3abc8a231dda31d3a761946a2b051537");
-		Message.creator(
-		    new PhoneNumber("+" + mobileNumber),
-		    new PhoneNumber("+19302064111"),
-		    "Your Call Tree OTP : " + otp)
-		.create();
-
+		
 		return otpEntity;
 	}
 	
@@ -79,6 +73,15 @@ public class UserService {
 		newUser.setGeolocationY(user.getGeolocationY());
 		userRepository.save(newUser);
 		
+		return newUser;
+	}
+	
+	public UserEntity modifyUser(UserDTO user) {
+		UserEntity newUser = userRepository.findByMobileNumber(user.getMobileNumber());
+		newUser.setAddress(user.getAddress());
+		newUser.setMobileNumber(user.getMobileNumber());
+		newUser.setName(user.getName());
+		userRepository.save(newUser);
 		return newUser;
 	}
 }

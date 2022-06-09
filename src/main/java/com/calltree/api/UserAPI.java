@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,11 @@ public class UserAPI {
 	@PostMapping
 	public ResponseEntity<UserEntity> createUser(@RequestBody UserDTO user) {
 		return ResponseEntity.ok(userService.createUser(user));
+	}
+	
+	@PatchMapping
+	public ResponseEntity<UserEntity> modifyUser(@RequestBody UserDTO user) {
+		return ResponseEntity.ok(userService.modifyUser(user));
 	}
 	
 	@GetMapping

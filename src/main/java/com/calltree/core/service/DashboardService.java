@@ -22,7 +22,7 @@ public class DashboardService {
 		dashboard.setUsers(userRepository.count());
 		dashboard.setAlerts(informationCallTreeRepository.count());
 		dashboard.setReports(alertRepository.count());
-		dashboard.setResponded(0);
+		dashboard.setResponded(alertRepository.countByStatus("Responded"));
 		return dashboard;
 	}
 
