@@ -28,6 +28,8 @@ public class AssessmentEntity{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private String brgy;
+	
 	private String subject;
 	
 	private String casualties;

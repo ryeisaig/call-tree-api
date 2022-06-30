@@ -8,6 +8,8 @@ import lombok.Getter;
 public class UserDTO {
 	private String mobileNumber;
 	private String name;
+	private String lastName;
+	private String brgy;
 	private String address;
 	private String geolocationX;
 	private String geolocationY;

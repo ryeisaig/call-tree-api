@@ -24,6 +24,10 @@ public class UserEntity {
 	private String mobileNumber;
 	
 	private String name;
+	
+	private String lastName;
+	
+	private String brgy;
 
 	private String address;
 	

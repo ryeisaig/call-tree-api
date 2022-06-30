@@ -50,8 +50,7 @@ public class UserService {
 		
 		
 		otpRepository.save(otpEntity);
-		
-		
+
 		return otpEntity;
 	}
 	
@@ -71,6 +70,8 @@ public class UserService {
 		newUser.setName(user.getName());
 		newUser.setGeolocationX(user.getGeolocationX());
 		newUser.setGeolocationY(user.getGeolocationY());
+		newUser.setBrgy(user.getBrgy());
+		newUser.setLastName(user.getLastName());
 		userRepository.save(newUser);
 		
 		return newUser;
@@ -81,6 +82,8 @@ public class UserService {
 		newUser.setAddress(user.getAddress());
 		newUser.setMobileNumber(user.getMobileNumber());
 		newUser.setName(user.getName());
+		newUser.setBrgy(user.getBrgy());
+		newUser.setLastName(user.getLastName());
 		userRepository.save(newUser);
 		return newUser;
 	}
