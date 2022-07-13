@@ -20,17 +20,21 @@ public class AccessEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	private String username;
-	
+
 	private String password;
-	
+
 	private String name;
 
 	private String createdBy;
 	
-	private LocalDateTime createdDate;
+	private String role;
 	
+	private String brgy;
+
+	private LocalDateTime createdDate;
+
 	@PrePersist
 	private void prePersist() {
 		this.setCreatedDate(LocalDateTime.now());

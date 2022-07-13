@@ -10,4 +10,6 @@ public class AccessDTO {
 	private String password;
 	private String name;
 	private String createdBy;
+	private String role;
+	private String brgy;
 }
