@@ -17,4 +17,6 @@ public interface AccessRepository extends JpaRepository<AccessEntity, Long> {
 
 	List<AccessEntity> findByOrderByCreatedDateDesc();
 
+	List<AccessEntity> findByRoleIsNull();
+
 }
