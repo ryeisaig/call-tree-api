@@ -39,6 +39,11 @@ public class AlertAPI {
 		return textMessageDTO;
 	}
 	
+	@SendTo("/topic/alert-update")
+	public TextMessageDTO broadcastMessageResp(@Payload TextMessageDTO textMessageDTO) {
+		return textMessageDTO;
+	}
+	
 	@PostMapping
 	public ResponseEntity<AlertEntity> createCallTree(@RequestBody AlertDTO alert) {
 		template.convertAndSend("/topic/alert", new TextMessageDTO("test"));
