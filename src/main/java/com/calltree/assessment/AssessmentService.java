@@ -221,12 +221,12 @@ public class AssessmentService {
 			
 			mainDiv.addElement(new Chunk("Submitted By", new Font(FontFamily.HELVETICA, 9, Font.NORMAL)));
 			mainDiv.addElement(new Chunk(ass.getCreatedBy(), new Font(FontFamily.HELVETICA, 9, Font.BOLD)));
-			mainDiv.addElement(new Chunk("Brgy Personel", new Font(FontFamily.HELVETICA, 9, Font.NORMAL)));
+			mainDiv.addElement(new Chunk("Brgy Personnel", new Font(FontFamily.HELVETICA, 9, Font.NORMAL)));
 			mainDiv.addElement(Chunk.NEWLINE);
 
 			mainDiv.addElement(new Chunk("Prepared By", new Font(FontFamily.HELVETICA, 9, Font.NORMAL)));
 			mainDiv.addElement(new Chunk(access.get(0).getName(), new Font(FontFamily.HELVETICA, 9, Font.BOLD)));
-			mainDiv.addElement(new Chunk("City Administrator", new Font(FontFamily.HELVETICA, 9, Font.NORMAL)));
+			mainDiv.addElement(new Chunk("CDRMMO Administrator", new Font(FontFamily.HELVETICA, 9, Font.NORMAL)));
 
 			mainDiv.addElement(Chunk.NEWLINE);
 
