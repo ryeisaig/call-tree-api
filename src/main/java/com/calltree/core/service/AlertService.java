@@ -1,5 +1,8 @@
 package com.calltree.core.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -15,7 +18,8 @@ import lombok.RequiredArgsConstructor;
 public class AlertService { 
 	
 	private final AlertRepository alertRepository;
-	
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+
 	public AlertEntity createAlert(AlertDTO alert) {
 		AlertEntity newAlert = new AlertEntity();
 		newAlert.setSubject(alert.getSubject());
@@ -33,8 +37,19 @@ public class AlertService {
 		return newAlert;
 	}
 	
-	public List<AlertEntity> getAlerts() {
-		List<AlertEntity> alerts = alertRepository.findByOrderByCreatedDateDesc();
+	public List<AlertEntity> getAlertsByMonth(String month) {
+		List<AlertEntity> alerts = null;
+		
+		if(month == null || month.trim().isBlank()) {
+			alerts = alertRepository.findByOrderByCreatedDateDesc();
+		} else {
+			
+			LocalDate localDate = LocalDate.parse(month, formatter);
+			LocalDateTime start = localDate.atStartOfDay();
+			LocalDateTime end = localDate.plusMonths(1).atStartOfDay();
+			alerts = alertRepository.findByCreatedDateBetween(start, end);
+		}
+				
 		return alerts;
 	}
 	

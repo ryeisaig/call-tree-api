@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.calltree.api.dto.AlertDTO;
 import com.calltree.api.dto.TextMessageDTO;
 import com.calltree.core.entity.AlertEntity;
-import com.calltree.core.entity.CallTreeEntity;
 import com.calltree.core.service.AlertService;
 
 import lombok.RequiredArgsConstructor;
@@ -68,7 +67,7 @@ public class AlertAPI {
 	}
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<AlertEntity>> getAlerts() {
-		return ResponseEntity.ok(alertService.getAlerts());
+	public ResponseEntity<List<AlertEntity>> getAlertsByMonth(@RequestParam(required = false) String month) {
+		return ResponseEntity.ok(alertService.getAlertsByMonth(month));
 	}
 }

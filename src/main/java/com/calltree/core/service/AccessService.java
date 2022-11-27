@@ -47,6 +47,8 @@ public class AccessService {
 		account.setBrgy(access.getBrgy());
 		account.setName(access.getName());
 		account.setUsername(access.getUsername());
+		account.setRole(access.getRole());
+		accessRepository.save(account);
 	}
 	
 	public void deleteAccount(long id) {
